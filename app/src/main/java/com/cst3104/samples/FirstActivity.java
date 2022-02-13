@@ -1,9 +1,8 @@
-package com.cst2335.exercises;
+package com.cst3104.samples;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
