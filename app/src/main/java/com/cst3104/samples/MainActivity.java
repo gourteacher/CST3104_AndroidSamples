@@ -1,13 +1,12 @@
-package com.cst2335.exercises;
-
+package com.cst3104.samples;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 

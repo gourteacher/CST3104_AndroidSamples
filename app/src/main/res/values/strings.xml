@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exercises</string>
+    <string name="app_name">Samples</string>
     <string name="hello_message"> Hello world   </string>
     <string name="button_text"> I\'m a button </string>
     <string name="enter_phone_number">Phone Number</string>
