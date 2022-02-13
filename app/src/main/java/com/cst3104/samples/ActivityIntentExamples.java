@@ -1,4 +1,4 @@
-package com.cst2335.exercises;
+package com.cst3104.samples;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class ActivityIntentExamples extends AppCompatActivity {
-
-    ActivityResultLauncher<String> mPhotoLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

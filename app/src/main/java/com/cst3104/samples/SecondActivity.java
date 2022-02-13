@@ -1,4 +1,4 @@
-package com.cst2335.exercises;
+package com.cst3104.samples;
 
 
 import androidx.activity.result.ActivityResult;
@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.app.Activity;
 import android.widget.ImageView;
+
+import com.cst3104.samples.FirstActivity;
 
 
 public class SecondActivity extends AppCompatActivity {

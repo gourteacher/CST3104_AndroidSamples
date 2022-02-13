@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exercises - Activities and Intents</string>
+    <string name="app_name">Samples - Activities and Intents</string>
 
     <string name="finish">Finish</string>
     <string name="save">Save</string>

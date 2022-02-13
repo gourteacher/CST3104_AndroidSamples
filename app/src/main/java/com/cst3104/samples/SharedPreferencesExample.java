@@ -1,4 +1,4 @@
-package com.cst2335.exercises;
+package com.cst3104.samples;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.cst3104.samples.FirstActivity;
 
 public class SharedPreferencesExample extends AppCompatActivity {
 
