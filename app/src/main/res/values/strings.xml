@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Exercises - RecyclerView </string>
-    <string name="button_text"> I\'m a button </string>
+    <string name="app_name">Samples - RecyclerView </string>
 
 </resources>
