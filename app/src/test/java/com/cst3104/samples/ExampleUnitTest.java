@@ -1,4 +1,4 @@
-package com.cst2335.exercises;
+package com.cst3104.samples;
 
 import org.junit.Test;
 
