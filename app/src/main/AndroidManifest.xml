@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cst2335.exercises">
+    package="com.cst3104.samples">
 
 
     <application
@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Exercises">
 
         <activity
-            android:name=".FirstActivity"
+            android:name="com.cst3104.samples.FirstActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
