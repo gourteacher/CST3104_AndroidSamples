@@ -1,61 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/preferencesLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.cst3104.samples.SharedPreferencesExample">
 
     <TextView
         android:id="@+id/PreferencesActivity"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
         android:text="@string/preferences_activity"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/dataReceivedFromActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dataReceivedFromActivity"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
+        android:layout_width="309dp"
+        android:layout_height="43dp"
         android:text="@string/data_received_from_activity"
-        android:textSize="24sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/pref_reserve_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PreferencesActivity" />
 
     <EditText
         android:id="@+id/pref_reserve_name"
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:textSize="24sp" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/pref_user_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataReceivedFromActivity" />
 
     <EditText
         android:id="@+id/pref_user_input"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/pref_userinput"
-        android:textSize="24sp" />
+        android:textColor="@color/purple_500"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/pref_month"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pref_reserve_name" />
 
     <TextView
         android:id="@+id/pref_month"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:textSize="24sp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/pref_other_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pref_user_input" />
 
     <TextView
         android:id="@+id/pref_other_info"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:textSize="24sp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pref_month" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/pref_user_input"
-        android:text="@string/save" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:text="@string/save"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pref_other_info" />
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/back" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

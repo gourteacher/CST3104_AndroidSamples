@@ -1,76 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <!--   @string means in strings.xml   -->
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
         android:text="Activity One"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/start_button"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="50dp"
         android:text="@string/main_button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/intent_examples"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/intent_examples"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/intent_examples" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/intent_examples"
+        app:layout_constraintBottom_toTopOf="@+id/shared_preferences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_button" />
 
     <Button
         android:id="@+id/shared_preferences"
-        android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:text="@string/preferences_activity" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/preferences_activity"
+        app:layout_constraintBottom_toTopOf="@+id/dataToPassToActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intent_examples" />
 
     <TextView
         android:id="@+id/dataToPassToActivity"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="Data To Pass To Next Activity"
-        android:textSize="24sp" />
+        android:textColor="@color/purple_700"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/reserved_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shared_preferences" />
 
     <TextView
         android:id="@+id/reserved_name"
-        android:layout_width="match_parent"
-        android:layout_height="73dp"
-        android:textSize="24sp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/user_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataToPassToActivity" />
 
     <EditText
         android:id="@+id/user_input"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:ems="10"
         android:hint="Enter some data"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/month"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reserved_name" />
 
     <TextView
         android:id="@+id/month"
-        android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:textSize="24sp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/other_Info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input" />
 
     <TextView
         android:id="@+id/other_Info"
-        android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
