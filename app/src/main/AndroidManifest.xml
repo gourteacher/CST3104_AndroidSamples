@@ -10,9 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Exercises">
-        <activity android:name="com.cst3104.samples.SharedPreferencesExample" />
-        <activity android:name="com.cst3104.samples.ActivityIntentExamples" />
-        <activity android:name="com.cst3104.samples.SecondActivity" />
         <activity
             android:name="com.cst3104.samples.FirstActivity"
             android:exported="true">
@@ -23,6 +20,6 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-feature android:name="android.hardware.camera" />
+
 
 </manifest>
