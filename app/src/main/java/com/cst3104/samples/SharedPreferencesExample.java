@@ -2,6 +2,7 @@ package com.cst3104.samples;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import com.cst3104.samples.FirstActivity;
 
 public class SharedPreferencesExample extends AppCompatActivity {
 
+    public final static String TAG ="SharedPreferencesExample";
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,13 +26,16 @@ public class SharedPreferencesExample extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
 
         SharedPreferences prefs = getSharedPreferences(FirstActivity.PREFERENCES_FILE, MODE_PRIVATE);
-        String previous = prefs.getString("ReserveName", "Default Value");
+        String previous = prefs.getString(FirstActivity.RESERVED_NAME_KEY, getResources().getString(R.string.default_value));
         editText.setText( previous);
 
         Intent fromPrevious = getIntent();
-        String input = fromPrevious.getStringExtra("USERINPUT"); //if "USERINPUT" is not found, return null
-        int month = fromPrevious.getIntExtra("MONTH", 0); //if "MONTH" is not found, return 0
-        double other = fromPrevious.getDoubleExtra("OTHER INFO", 0.0);//if "OTHERINFO" is not found, return 0.0
+        //if "USERINPUT" is not found, return null
+        String input = fromPrevious.getStringExtra(FirstActivity.USER_INPUT_KEY);
+        //if "MONTH" is not found, return 0
+        int month = fromPrevious.getIntExtra(FirstActivity.MONTH_KEY, 0);
+        //if "OTHERINFO" is not found, return 0.0
+        double other = fromPrevious.getDoubleExtra(FirstActivity.OTHER_INFO_KEY, 0.0);
 
         EditText userInput = findViewById(R.id.pref_user_input);
         if ( !input.isEmpty()) {
@@ -41,19 +48,16 @@ public class SharedPreferencesExample extends AppCompatActivity {
 
         saveButton.setOnClickListener(clk -> {
             SharedPreferences.Editor writer = prefs.edit();
-            writer.putString("ReserveName", editText.getText().toString());
-            writer.putString("USERINPUT", userInput.getText().toString());
-            writer.putInt("MONTH", month);
-            writer.putFloat("OTHER INFO", (float)other);
+            writer.putString(FirstActivity.RESERVED_NAME_KEY, editText.getText().toString());
+            writer.putString(FirstActivity.USER_INPUT_KEY, userInput.getText().toString());
+            writer.putInt(FirstActivity.MONTH_KEY, month);
+            writer.putFloat(FirstActivity.OTHER_INFO_KEY, (float)other);
 
             writer.apply(); //save to disk
         });
 
         Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener( clk ->
-        {
-            setResult(40, null);
-            finish();
-        });
+        backButton.setOnClickListener( clk -> finish() ) ;
+
     }
 }

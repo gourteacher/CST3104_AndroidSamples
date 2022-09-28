@@ -36,6 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="24sp"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/pref_user_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,8 @@
         android:id="@+id/pref_user_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/pref_userinput"
+        android:hint="@string/pref_userinput"
+        android:inputType="textPersonName"
         android:textColor="@color/purple_500"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/pref_month"
@@ -76,7 +78,7 @@
     <Button
         android:id="@+id/saveButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
         android:text="@string/save"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
@@ -87,11 +89,12 @@
     <Button
         android:id="@+id/backButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveButton" />
 
