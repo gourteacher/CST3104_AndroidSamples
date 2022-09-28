@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.app.Activity;
 import android.widget.ImageView;
 
-import com.cst3104.samples.FirstActivity;
+
 
 
 public class SecondActivity extends AppCompatActivity {
@@ -57,28 +57,25 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Intent fromPrevious = getIntent();
-        String input = fromPrevious.getStringExtra("USERINPUT"); //if "USERINPUT" is not found, return null
-        int month = fromPrevious.getIntExtra("MONTH", 0); //if "MONTH" is not found, return 0
-        double other = fromPrevious.getDoubleExtra("OTHER INFO", 0.0);//if "OTHERINFO" is not found, return 0.0
+        //if "USERINPUT" is not found, return null
+        String input = fromPrevious.getStringExtra(FirstActivity.USER_INPUT_KEY);
+
+        Log.i(TAG, " Reading " + input );
 
         //save data from first page:
         SharedPreferences prefs = getSharedPreferences(FirstActivity.PREFERENCES_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor writer = prefs.edit();
-        writer.putString("USERINPUT", input);
-        writer.putInt("MONTH", month);
-        writer.putFloat("OTHER INFO", (float)other);
+        Log.i(TAG, " Saving " + input );
+        writer.putString(FirstActivity.USER_INPUT_KEY, input);
 
         writer.apply(); //save to disk
 
         Button cam = findViewById( R.id.start_camera);
-        cam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cam.setOnClickListener(view -> {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    myPictureTakerLauncher.launch(takePictureIntent);
-                }
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                myPictureTakerLauncher.launch(takePictureIntent);
             }
         });
 

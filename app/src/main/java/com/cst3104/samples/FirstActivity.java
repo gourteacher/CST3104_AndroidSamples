@@ -18,53 +18,36 @@ public class FirstActivity extends AppCompatActivity {
 
     public final static String PREFERENCES_FILE = "MyData";
 
+    public final static String USER_INPUT_KEY = "USERINPUT";
+
     @Override     //first called
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //calls parent onCreate()
 
-        Log.i(TAG, "In onCreate, creating the objects");
         setContentView( R.layout.activity_main ); //loads XML on screen
 
         SharedPreferences prefs = getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
         //Read preferences
-        String previous = prefs.getString("ReserveName", "Default Value");
+        String previous = prefs.getString(USER_INPUT_KEY, "Default Value");
         TextView edit = findViewById(R.id.reserved_name);
         edit.setText(previous);
 
         Button btn = findViewById(R.id.start_button);
         btn.setOnClickListener(  (  click ) ->
         {
-                                            //Where you are     //where we're going
+            //Where you are     //where we're going
             Intent nextPage = new Intent(FirstActivity.this,   SecondActivity.class  );
+
+            EditText userInput = findViewById(R.id.user_input);
+            String input = userInput.getText().toString();
+            if (!input.isEmpty()) {
+                nextPage.putExtra(USER_INPUT_KEY, input);
+            }
             //Make the transition:
             startActivity(nextPage);
 
         } ); //OnCLickListener goes in here
 
-
-        Button btn2 = findViewById(R.id.intent_examples);
-        btn2.setOnClickListener( (  click ) ->
-        {
-            Intent nextPage = new Intent(FirstActivity.this,   ActivityIntentExamples.class  );
-            //Make the transition:
-            startActivity(    nextPage  );
-        }); //OnCLickListener goes in here
-
-        //SharedPreferencesExample
-        Button btn3 = findViewById(R.id.shared_preferences);
-        btn3.setOnClickListener( (  click ) ->
-        {
-            EditText userText = findViewById(R.id.user_input);
-            String userTyped = userText.getText().toString();
-            Intent nextPage = new Intent(FirstActivity.this,   SharedPreferencesExample.class  );
-
-            nextPage.putExtra("USERINPUT", userTyped);
-            nextPage.putExtra("MONTH", 10);
-            nextPage.putExtra("OTHER INFO", 3.14);
-
-            //Make the transition:
-            startActivity(    nextPage  );
-            });
     }
 
     @Override //screen is visible but not responding
