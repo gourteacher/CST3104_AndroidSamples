@@ -23,11 +23,9 @@ import java.util.Locale;
 //This makes it a page in your application
 public class FirstActivity extends AppCompatActivity {
     //use them anywhere in the class:
-    Button submit;
-    EditText edit;
-    RecyclerView rView;
-    MyAdapter theAdapter;   //<<cannot be anonymous<<
-    ArrayList<Message> messages = new ArrayList<>();
+    private EditText edit;
+    private MyAdapter theAdapter;
+    private ArrayList<Message> messages;
 
     //need onCreate:
     @Override
@@ -37,10 +35,11 @@ public class FirstActivity extends AppCompatActivity {
         //load XML:
         setContentView(R.layout.activity_main);
 
-        submit = findViewById(R.id.submitButton);
+        Button submit = findViewById(R.id.submitButton);
         edit = findViewById(R.id.editText);
-        rView = findViewById(R.id.myRecycleView);
+        RecyclerView  rView = findViewById(R.id.myRecycleView);
 
+        messages = new ArrayList<>();
         theAdapter = new MyAdapter();
         rView.setAdapter( theAdapter ) ;
         rView.setLayoutManager(new LinearLayoutManager(this));
