@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Samples - ListView</string>
-
-
+    <string name="app_name">TestNotResponding</string>
+    <string name="start">Start</string>
 </resources>
