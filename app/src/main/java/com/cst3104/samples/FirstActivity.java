@@ -4,6 +4,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -12,36 +19,56 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new MyTask().execute("This is MyTask parameter");
+        MyHTTPRequest req = new MyHTTPRequest();
+        req.execute("https://api.publicapis.org/entries");  //Type 1
     }
 
-
     //Type1     Type2   Type3
-    static private class MyTask extends AsyncTask< String, Integer, String>
+    private static class MyHTTPRequest extends AsyncTask< String, Integer, String>
     {
-        static private final String TAG = "MyTask";
+        static private final String TAG = "MyHTTPRequest";
 
         //Type3                Type1
-        @Override
         public String doInBackground(String ... args)
         {
             try {
 
                 //create a URL object of what server to contact:
-                String myString = args[0];
+                URL url = new URL(args[0]);
+
+                //open the connection
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                //wait for data:
+                InputStream response = urlConnection.getInputStream();
+
+                //JSON reading:
+                //Build the entire string response:
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response, StandardCharsets.UTF_8), 8);
+                StringBuilder sb = new StringBuilder();
+
+                String line = null;
+                while ((line = reader.readLine()) != null)
+                {
+                    sb.append(line).append("\n");
+                }
+                String result = sb.toString(); //result is the whole string
+
+                // convert string to JSON
+                JSONObject uvReport = new JSONObject(result);
+
+                //get the double associated with "value"
+                int numEntries = uvReport.getInt("count");
 
                 publishProgress(25);
                 Thread.sleep(1000);
                 publishProgress(50);
-                Thread.sleep(1000);
-                publishProgress(75);
-
+                Log.i(TAG, "Number of entries: " + numEntries) ;
             }
             catch (Exception e)
             {
-                Log.e(TAG, "Error in doInBackground");
+                Log.w(TAG, "Error in doInBackground");
             }
-
             return "Done";
         }
 
@@ -50,6 +77,7 @@ public class FirstActivity extends AppCompatActivity {
         {
             Log.i(TAG, "onProgressUpdate");
         }
+
         //Type3
         public void onPostExecute(String fromDoInBackground)
         {
