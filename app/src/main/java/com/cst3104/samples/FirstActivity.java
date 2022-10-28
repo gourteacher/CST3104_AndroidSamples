@@ -1,38 +1,60 @@
 package com.cst3104.samples;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
-
-    private static final String TAG = "FirstActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button start = findViewById( R.id.startId);
+        new MyTask().execute("This is MyTask parameter");
+    }
 
-        TextView tv = findViewById(R.id.textViewId);
 
-        start.setOnClickListener(view -> {
-            int i = 0;
-            while (i <= 20) {
-                try {
-                    Thread.sleep(1000);
-                    i++;
-                }
-                catch (Exception e) {
-                    Log.e(TAG, "Error while sleeping");
-                }
+    //Type1     Type2   Type3
+    static private class MyTask extends AsyncTask< String, Integer, String>
+    {
+        static private final String TAG = "MyTask";
+
+        //Type3                Type1
+        @Override
+        public String doInBackground(String ... args)
+        {
+            try {
+
+                //create a URL object of what server to contact:
+                String myString = args[0];
+
+                publishProgress(25);
+                Thread.sleep(1000);
+                publishProgress(50);
+                Thread.sleep(1000);
+                publishProgress(75);
+
             }
-            tv.setText("Button Pressed");
-        });
+            catch (Exception e)
+            {
+                Log.e(TAG, "Error in doInBackground");
+            }
+
+            return "Done";
+        }
+
+        //Type 2
+        public void onProgressUpdate(Integer ... args)
+        {
+            Log.i(TAG, "onProgressUpdate");
+        }
+        //Type3
+        public void onPostExecute(String fromDoInBackground)
+        {
+            Log.i(TAG, fromDoInBackground);
+        }
     }
 }
 
