@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">AsyncTask with JSON</string>
+    <string name="app_name">Options Menu</string>
+    <string name="red_color">Red</string>
+    <string name="yellow_color">Yellow</string>
+    <string name="blue_color">Blue</string>
+    <string name="green_color">Green</string>
 </resources>
