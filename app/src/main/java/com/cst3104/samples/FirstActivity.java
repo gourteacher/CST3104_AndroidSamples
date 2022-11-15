@@ -1,5 +1,6 @@
 package com.cst3104.samples;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,41 +8,39 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import com.google.android.material.navigation.NavigationView;
 
-public class FirstActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class FirstActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.toolbar_title); // set the Name
-        setSupportActionBar(toolbar);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        toolbar.setSubtitle(R.string.toolbar_subtitle); // the second line
-        toolbar.setLogo(R.drawable.mini_opera_icon);
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(item -> {
 
-        //For NavigationDrawer:
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawer, toolbar, R.string.open, R.string.close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            switch (item.getItemId()) {
+                case R.id.home_id:
+                    return true;
+                case R.id.second_id:
+                    startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                    return true;
+                case R.id.third_id:
+                    startActivity(new Intent(getApplicationContext(), ThirdActivity.class));
+                    return true;
+            }
+            return false;
+        });
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -83,45 +82,9 @@ public class FirstActivity extends AppCompatActivity implements NavigationView.O
                 break;
         }
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-
         return super.onOptionsItemSelected(item);
     }
 
-    // Needed for the OnNavigationItemSelected interface:
-    @Override
-    public boolean onNavigationItemSelected( MenuItem item) {
-
-        String message = null;
-
-        switch(item.getItemId())
-        {
-            case R.id.share_item:
-                message = "You clicked on share";
-                break;
-            case R.id.app_bar_search:
-                message = "You clicked on the search";
-                break;
-            case R.id.video_item:
-                message = "You clicked on video";
-                break;
-            case R.id.mail_item:
-                message = "You clicked on mail";
-                break;
-            case R.id.call_item:
-                message = "You clicked on call";
-                break;
-        }
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-
-        if ( message != null ) {
-            Toast.makeText(this, "NavigationDrawer: " + message, Toast.LENGTH_LONG).show();
-        }
-        return false;
-    }
 
 }
 
