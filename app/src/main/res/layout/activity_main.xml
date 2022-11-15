@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".FirstActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
     <View
         android:id="@+id/my_rectangle"
