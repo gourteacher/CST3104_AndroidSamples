@@ -1,5 +1,6 @@
 package com.cst3104.samples;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -55,6 +56,11 @@ public class FirstActivity extends AppCompatActivity {
 
             case R.id.yellow_id:
                 v.setBackgroundColor(Color.YELLOW);
+                break;
+
+            case R.id.move_to_next:
+                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
