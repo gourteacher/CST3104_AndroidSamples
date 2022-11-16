@@ -18,7 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class FirstActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class FirstActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +26,48 @@ public class FirstActivity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.toolbar_title); // set the Name
         setSupportActionBar(toolbar);
 
-        toolbar.setSubtitle(R.string.toolbar_subtitle); // the second line
-        toolbar.setLogo(R.drawable.mini_opera_icon);
-
-
         //For NavigationDrawer:
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawer, toolbar, R.string.open, R.string.close);
-        drawer.addDrawerListener(toggle);
+                drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setNavigationItemSelectedListener(item ->
+            {
+                String message = null;
+
+                switch(item.getItemId())
+                {
+                    case R.id.share_item:
+                        message = "You clicked on share";
+                        break;
+                    case R.id.app_bar_search:
+                        message = "You clicked on the search";
+                        break;
+                    case R.id.video_item:
+                        message = "You clicked on video";
+                        break;
+                    case R.id.mail_item:
+                        message = "You clicked on mail";
+                        break;
+                    case R.id.call_item:
+                        message = "You clicked on call";
+                        break;
+                }
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                if ( message != null ) {
+                    Toast.makeText(this, "NavigationDrawer: " + message, Toast.LENGTH_LONG).show();
+                }
+                return false ;
+            }
+        );
     }
 
     @Override
@@ -87,40 +113,6 @@ public class FirstActivity extends AppCompatActivity implements NavigationView.O
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return super.onOptionsItemSelected(item);
-    }
-
-    // Needed for the OnNavigationItemSelected interface:
-    @Override
-    public boolean onNavigationItemSelected( MenuItem item) {
-
-        String message = null;
-
-        switch(item.getItemId())
-        {
-            case R.id.share_item:
-                message = "You clicked on share";
-                break;
-            case R.id.app_bar_search:
-                message = "You clicked on the search";
-                break;
-            case R.id.video_item:
-                message = "You clicked on video";
-                break;
-            case R.id.mail_item:
-                message = "You clicked on mail";
-                break;
-            case R.id.call_item:
-                message = "You clicked on call";
-                break;
-        }
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-
-        if ( message != null ) {
-            Toast.makeText(this, "NavigationDrawer: " + message, Toast.LENGTH_LONG).show();
-        }
-        return false;
     }
 
 }

@@ -42,4 +42,5 @@
                 android:title="@string/video" />
         </menu>
     </item>
+
 </menu>
