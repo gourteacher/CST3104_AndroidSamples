@@ -23,7 +23,7 @@ public class FirstActivity extends AppCompatActivity  {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.home_id);
 
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
