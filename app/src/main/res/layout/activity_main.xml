@@ -1,23 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/my_rectangle"
-        android:layout_width="56dp"
-        android:layout_height="103dp"
-        android:background="#FDD835"
+
+    <FrameLayout
+        android:id="@+id/fl1"
+        android:layout_width="423dp"
+        android:layout_height="426dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_id">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/switch_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/detail"
+        app:layout_constraintBottom_toTopOf="@+id/fl1"
+        app:layout_constraintEnd_toStartOf="@+id/switch_id2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/switch_id2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/listview"
+        app:layout_constraintBottom_toTopOf="@+id/fl1"
+        app:layout_constraintEnd_toStartOf="@+id/switch_id3"
+        app:layout_constraintStart_toEndOf="@+id/switch_id"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.475" />
 
-    <include layout="@layout/bottom_navigation" />
-
+    <Button
+        android:id="@+id/switch_id3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/login"
+        app:layout_constraintBottom_toTopOf="@+id/fl1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/switch_id2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
 </androidx.constraintlayout.widget.ConstraintLayout>
