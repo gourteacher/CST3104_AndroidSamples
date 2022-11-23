@@ -1,25 +1,25 @@
 package com.cst3104.samples;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DetailFragment#newInstance} factory method to
+ * Use the {@link SuperFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetailFragment extends Fragment {
+public class SuperFragment extends Fragment {
 
-    static final String TAG = DetailFragment.class.getSimpleName();
 
+    private  float visibility = 1.0f;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +29,7 @@ public class DetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DetailFragment() {
+    public SuperFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +39,11 @@ public class DetailFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailFragment.
+     * @return A new instance of fragment SuperFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DetailFragment newInstance(String param1, String param2) {
-        DetailFragment fragment = new DetailFragment();
+    public static SuperFragment newInstance(String param1, String param2) {
+        SuperFragment fragment = new SuperFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -54,7 +54,6 @@ public class DetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -64,32 +63,33 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.i(TAG, "onCreateView");
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+        View v =  inflater.inflate(R.layout.fragment_super, container, false);
+
+        Button btn = v.findViewById(R.id.super_button);
+
+        btn.setOnClickListener( c -> {
+            NavController navController = Navigation.findNavController (v);
+            navController.navigate(R.id.action_superFragment_to_loginFragment);
+        } );
+
+        Button btn2 = v.findViewById(R.id.animate_btn);
+
+        btn2.setOnClickListener( c -> {
+            TextView tv = v.findViewById(R.id.textView2);
+            my_animate(tv);
+
+       });
+
+        return v;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Log.i(TAG, "onViewCreated");
+    private void my_animate(TextView tv) {
+        tv.animate().alpha(visibility);
+        visibility -= 0.10f;
+        if (visibility <= 0.0f) {
+            visibility = 1.0f;
+        }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart");
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        Log.i(TAG, "onAttach");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i(TAG, "onDetach");
-    }
 }
