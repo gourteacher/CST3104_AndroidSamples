@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Exercises">
         <activity
-            android:name="com.cst3104.samples.SecondActivity"
+            android:name=".SecondActivity"
             android:exported="false" />
         <activity
-            android:name="com.cst3104.samples.FirstActivity"
+            android:name=".FirstActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,7 +18,7 @@ public class FirstActivity extends AppCompatActivity {
         Button secondButton = findViewById(R.id.buttonToSecond);
         EditText inputText = findViewById(R.id.inputText);
 
-        //This creates a transition to load SecontActivity.java:
+        //This creates a transition to load SecondActivity.java:
         Intent nextPage = new Intent(this, SecondActivity.class);
         //when you click the button, start the next activity:
         secondButton.setOnClickListener( click ->

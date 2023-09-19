@@ -1,18 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/inputText"
-        android:hint="Type here"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="104dp"
+        android:hint="@string/type_here" />
 
     <Button
         android:id="@+id/buttonToSecond"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Go to second activity" />
+        android:layout_width="279dp"
+        android:layout_height="76dp"
+        android:text="@string/go_to_second_activity" />
 
 </LinearLayout>
