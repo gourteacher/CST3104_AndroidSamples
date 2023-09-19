@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Samples - RecyclerView </string>
+    <string name="app_name">Samples - ListView Messages</string>
+    <string name="send">Send</string>
+    <string name="enter_your_message">Enter your message</string>
+    <string name="message_goes_here">Message goes here</string>
+    <string name="time_goes_here">Time goes here</string>
 
 </resources>
