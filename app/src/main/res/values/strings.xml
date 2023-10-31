@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Samples - RecyclerView </string>
-
+    <string name="msg_text">Message goes here</string>
+    <string name="msg_time">Time goes here</string>
+    <string name="btn_submit">Send</string>
+    <string name="hint_message">Enter your message</string>
+    <string name="sb_item_click">You clicked on item</string>
+    <string name="sb_action">Delete</string>
 </resources>
