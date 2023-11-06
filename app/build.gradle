@@ -6,7 +6,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.cst3104.samples"
+        applicationId "com.college.exercises_s22"
         minSdk 27
         targetSdk 34
         versionCode 1
@@ -32,9 +32,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    //buildFeatures {
-    //    viewBinding true
-    //}
+    buildFeatures {
+        viewBinding true
+    }
 
 }
 
