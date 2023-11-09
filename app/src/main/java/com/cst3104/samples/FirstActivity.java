@@ -10,12 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 public class FirstActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView( R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.toolbar_title); // set the Name
@@ -40,27 +41,19 @@ public class FirstActivity extends AppCompatActivity {
 
         View v = findViewById(R.id.my_rectangle);
 
-        switch(id) {
-            case R.id.red_id:
-                v.setBackgroundColor(Color.RED);
-                break;
-
-            case R.id.blue_id:
-                v.setBackgroundColor(Color.BLUE);
-                break;
-
-            case R.id.green_id:
-                v.setBackgroundColor(Color.GREEN);
-                break;
-
-            case R.id.yellow_id:
-                v.setBackgroundColor(Color.YELLOW);
-                break;
-            default:
-                break;
+        if ( id ==  R.id.red_id) {
+            v.setBackgroundColor(Color.RED);
+        }
+        else if (id == R.id.blue_id) {
+            v.setBackgroundColor(Color.BLUE);
+        }
+        else if ( id == R.id.green_id) {
+            v.setBackgroundColor(Color.GREEN);
+        }
+        else if (id == R.id.yellow_id) {
+            v.setBackgroundColor(Color.YELLOW);
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
 
