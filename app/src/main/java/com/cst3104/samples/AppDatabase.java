@@ -1,13 +1,9 @@
 package com.cst3104.samples;
 
 import android.content.Context;
-
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
-import com.cst3104.samples.PersonDAO;
-
 
 @Database(entities = {Person.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
