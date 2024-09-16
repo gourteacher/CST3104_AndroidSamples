@@ -28,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
         sw.setOnCheckedChangeListener( ( btn, onOrOff) -> {
             radio.setChecked(onOrOff);
 
-            Snackbar. make(sw, "You clicked on switch", Snackbar.LENGTH_LONG).show();
+            Snackbar. make(sw, R.string.clicked_on_switch, Snackbar.LENGTH_LONG).show();
         });
 
 
         cb.setOnCheckedChangeListener( ( b, c) -> {
-            Toast.makeText(MainActivity.this, "You clicked on checkbox", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, R.string.clicked_on_checkbox, Toast.LENGTH_SHORT).show();
             radio.setChecked(c);
         });
 
