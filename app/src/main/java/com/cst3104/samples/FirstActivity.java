@@ -31,8 +31,6 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
