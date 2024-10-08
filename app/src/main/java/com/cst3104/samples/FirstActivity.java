@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -37,6 +38,15 @@ public class FirstActivity extends AppCompatActivity {
             myAdapter.notifyDataSetChanged();
             Log.i(TAG, "addButton");
         });
+
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                elements.remove(i);
+                myAdapter.notifyDataSetChanged();
+            }
+        });
+
     }
 }
 
