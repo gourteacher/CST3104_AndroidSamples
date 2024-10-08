@@ -19,53 +19,24 @@ public class FirstActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private ArrayList<String> elements = new ArrayList<>(  );
-    MyListAdapter myAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Your program starts here
+        ListAdapter myAdapter;
         super.onCreate(savedInstanceState);
-
-        // setContentView loads objects onto the screen.
-        // Before this function, the screen is empty.
         setContentView(R.layout.activity_main);
 
         ListView myList = findViewById(R.id.theListView);
-        //Line 37 is the same as lines 35 and 36:
-        //ListAdapter myAdapter = new MyListAdapter();
-        //myList.setAdapter( myAdapter);
-        myList.setAdapter( myAdapter = new MyListAdapter());
+        myAdapter = new ListAdapter(getApplicationContext(), elements);
+        myList.setAdapter( myAdapter);
 
         Button addButton = findViewById(R.id.addButton);
         addButton.setOnClickListener( click -> {
-
+            elements.add( "This is row " + elements.size() );
+            myAdapter.notifyDataSetChanged();
             Log.i(TAG, "addButton");
         });
-
-    }
-
-    private class MyListAdapter extends BaseAdapter {
-
-        public int getCount() { return elements.size();}
-
-        public Object getItem(int position) { return "This is row " + position; }
-
-        public long getItemId(int position) { return (long) position; }
-
-        public View getView(int position, View old, ViewGroup parent)
-        {
-            LayoutInflater inflater = getLayoutInflater();
-
-            //make a new row:
-            View newView = inflater.inflate(R.layout.row_layout, parent, false);
-
-            //set what the text should be for this row:
-            TextView tView = newView.findViewById(R.id.textGoesHere);
-            tView.setText( getItem(position).toString() );
-
-            //return it to be put in the table
-            return newView;
-        }
     }
 }
 
