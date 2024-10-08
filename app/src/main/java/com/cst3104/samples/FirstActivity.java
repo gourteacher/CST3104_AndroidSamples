@@ -2,8 +2,6 @@ package com.cst3104.samples;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class FirstActivity extends AppCompatActivity {
 
         Button addButton = findViewById(R.id.addButton);
         addButton.setOnClickListener( click -> {
-            elements.add( "This is row " + elements.size() );
+            elements.add(String.valueOf(R.string.item_added + elements.size()));
             myAdapter.notifyDataSetChanged();
             Log.i(TAG, "addButton");
         });
