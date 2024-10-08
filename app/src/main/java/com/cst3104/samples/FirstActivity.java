@@ -2,25 +2,20 @@ package com.cst3104.samples;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import android.widget.AdapterView;;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private ArrayList<String> elements = new ArrayList<>(  );
-
+    private final ArrayList<String> elements = new ArrayList<>(  );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +41,30 @@ public class FirstActivity extends AppCompatActivity {
                 myAdapter.notifyDataSetChanged();
             }
         });
+
+        myList.setOnItemLongClickListener( (p, b, pos, id) -> {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(R.string.dialog_title)
+
+                    //What is the message:
+                    .setMessage(R.string.dialog_message)
+
+                    //what the Yes button does:
+                    .setPositiveButton( R.string.dialog_positive, (click, arg) -> {
+                        elements.add(getString(R.string.sample_message));
+                        myAdapter.notifyDataSetChanged();
+                    })
+                    //What the No button does:
+                    .setNegativeButton(R.string.dialog_negative, (click, arg) -> { })
+
+                    //An optional third button:
+                    .setNeutralButton(R.string.dialog_cancel, (click, arg) -> {  })
+
+                    //Show the dialog
+                    .create().show();
+            return true;
+        });
+
 
     }
 }

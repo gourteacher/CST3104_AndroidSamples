@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Samples - ListView</string>
-
-
+    <string name="sample_message">Hello</string>
+    <string name="dialog_title">Make a choice</string>
+    <string name="dialog_message">Do you want to add a row?</string>
+    <string name="dialog_positive">Yes</string>
+    <string name="dialog_negative">No</string>
+    <string name="dialog_cancel">Maybe</string>
 </resources>
