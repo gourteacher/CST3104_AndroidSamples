@@ -6,63 +6,56 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 public class FirstActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private final ArrayList<String> elements = new ArrayList<>(  );
+    private ListAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ListAdapter myAdapter;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ListView myList = findViewById(R.id.theListView);
         myAdapter = new ListAdapter(getApplicationContext(), elements);
-        myList.setAdapter( myAdapter);
+        myList.setAdapter(myAdapter);
 
-        Button addButton = findViewById(R.id.addButton);
-        addButton.setOnClickListener( click -> {
-            elements.add( "This is row " + elements.size() );
+        View.OnClickListener undo = view -> {
+            elements.remove(elements.size() -1);
             myAdapter.notifyDataSetChanged();
-            Log.i(TAG, "addButton");
+            Snackbar.make(view, R.string.list_removal, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.dialog_action, null).show();
+        };
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> {
+            addListItem();
+            Snackbar.make(view, R.string.list_addition,
+                            Snackbar.LENGTH_LONG)
+                    //.setAction(R.string.dialog_action, null).show();
+                    .setAction(R.string.dialog_undo, undo).show();
         });
+    }
 
-        myList.setOnItemClickListener((adapterView, view, i, l) -> {
-            elements.remove(i);
-            myAdapter.notifyDataSetChanged();
-        });
-
-        myList.setOnItemLongClickListener( (p, b, pos, id) -> {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle(R.string.dialog_title)
-
-                    //What is the message:
-                    .setMessage(R.string.dialog_message)
-
-                    //what the Yes button does:
-                    .setPositiveButton( R.string.dialog_positive, (click, arg) -> {
-                        elements.add(getString(R.string.sample_message));
-                        myAdapter.notifyDataSetChanged();
-                    })
-                    //What the No button does:
-                    .setNegativeButton(R.string.dialog_negative, (click, arg) -> { })
-
-                    //An optional third button:
-                    .setNeutralButton(R.string.dialog_cancel, (click, arg) -> {  })
-
-                    //Show the dialog
-                    .create().show();
-            return true;
-        });
-
-
+    private void addListItem() {
+        SimpleDateFormat dateformat =
+                new SimpleDateFormat(DATE_FORMAT,
+                        Locale.US);
+        elements.add(dateformat.format(new Date()));
+        myAdapter.notifyDataSetChanged();
     }
 }
 
