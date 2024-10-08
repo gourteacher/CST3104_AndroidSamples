@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Samples - ListView</string>
+    <string name="row_added">This is row</string>
 
 
 </resources>

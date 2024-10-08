@@ -2,24 +2,16 @@ package com.cst3104.samples;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private ArrayList<String> elements = new ArrayList<>(  );
-
+    private final ArrayList<String> elements = new ArrayList<>(  );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +25,7 @@ public class FirstActivity extends AppCompatActivity {
 
         Button addButton = findViewById(R.id.addButton);
         addButton.setOnClickListener( click -> {
-            elements.add( "This is row " + elements.size() );
+            elements.add(String.valueOf(R.string.row_added + elements.size()));
             myAdapter.notifyDataSetChanged();
             Log.i(TAG, "addButton");
         });
