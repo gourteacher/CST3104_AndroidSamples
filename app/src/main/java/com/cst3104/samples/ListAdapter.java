@@ -23,7 +23,7 @@ public class ListAdapter extends BaseAdapter {
 
     public Object getItem(int position) { return "This is row " + position; }
 
-    public long getItemId(int position) { return (long) position; }
+    public long getItemId(int position) { return position; }
 
     public View getView(int position, View old, ViewGroup parent)
     {

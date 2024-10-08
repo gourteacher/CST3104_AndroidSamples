@@ -3,7 +3,7 @@ package com.cst3104.samples;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
@@ -34,12 +34,9 @@ public class FirstActivity extends AppCompatActivity {
             Log.i(TAG, "addButton");
         });
 
-        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                elements.remove(i);
-                myAdapter.notifyDataSetChanged();
-            }
+        myList.setOnItemClickListener((adapterView, view, i, l) -> {
+            elements.remove(i);
+            myAdapter.notifyDataSetChanged();
         });
 
         myList.setOnItemLongClickListener( (p, b, pos, id) -> {
