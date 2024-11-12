@@ -42,7 +42,7 @@ public class FirstActivity extends AppCompatActivity  {
                 } else if (item.getItemId() == R.id.mail_item) {
                     message = getString(R.string.mail_msg);
                 } else if (item.getItemId() == R.id.call_item) {
-                    message = getString(R.string.call_msg);;
+                    message = getString(R.string.call_msg);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
