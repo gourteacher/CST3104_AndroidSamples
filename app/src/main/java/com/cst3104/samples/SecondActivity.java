@@ -15,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         //This gets the toolbar from the layout:
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         toolbar.setTitle(R.string.second_activity);
@@ -23,8 +23,11 @@ public class SecondActivity extends AppCompatActivity {
 
         // Here we need the Action Bar
         ActionBar myBar = getSupportActionBar();
-        myBar.setDisplayHomeAsUpEnabled(true);
-
+        if (myBar != null) {
+            myBar.setDisplayHomeAsUpEnabled(true);
+        } else {
+            Log.d("SecondActivity", "myBar is null");
+        }
 
     }
 }

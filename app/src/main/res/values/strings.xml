@@ -21,4 +21,12 @@
     <string name="close">Close</string>
     <string name="search">Search</string>
     <string name="hello_drawer">This is the Drawer Layout!</string>
+
+    <string name="share_msg">You clicked on share</string>
+    <string name="mail_msg">You clicked on mail</string>
+    <string name="call_msg">You clicked on call</string>
+    <string name="search_msg">You clicked on search</string>
+    <string name="video_msg">You clicked on video</string>
+
+    <string name="drawer_msg">Navigation Drawer : </string>
 </resources>
