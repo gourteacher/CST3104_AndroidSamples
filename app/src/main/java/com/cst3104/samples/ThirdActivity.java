@@ -1,7 +1,6 @@
 package com.cst3104.samples;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,17 +20,14 @@ public class ThirdActivity extends AppCompatActivity {
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
-            switch (item.getItemId()) {
-                case R.id.home_id:
-                    startActivity(new Intent(getApplicationContext(), FirstActivity.class));
-                    return true;
-                case R.id.second_id:
-                    startActivity(new Intent(getApplicationContext(), SecondActivity.class));
-                    return true;
-                case R.id.third_id:
-                    return true;
-            }
-            return false;
+            if (item.getItemId() == R.id.home_id) {
+                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                return true;
+            } else if (item.getItemId() == R.id.second_id) {
+                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                return true;
+            } else
+                return item.getItemId() == R.id.third_id;
         });
     }
 }
